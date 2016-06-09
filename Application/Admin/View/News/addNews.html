@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加新闻</title>
+</head>
+<body>
+<div class="container">
+
+        <label for="newstitle">
+            新闻标题:
+        </label>
+        <input type="text" name="newstitle" id="newstitle"/>
+        <label for="newscontent">
+            新闻内容:
+        </label>
+        <input type="text" name="newscontent" id="newscontent"/>
+        <label for="addtime">
+            添加日期:
+        </label>
+        <input type="text" name="addtime" id="addtime"/>
+        <input type="button" value="添加新闻" id="addnews" onclick="addNews()">
+        <a href="{:U('Index/index')}" class="btn">返回管理界面</a>
+
+</div>
+<script src="//cdn.bootcss.com/jquery/3.0.0-beta1/jquery.js" ></script>
+<script type="text/javascript">
+
+    function addNews(){
+        newstitle = $("#newstitle").val();
+        newscontent = $("#newscontent").val();
+        addtime = $("#addtime").val();
+        $.ajax({
+            url: "{:U('News/addNewsHandler')}",
+            data: {
+                newstitle: newstitle,
+                newscontent : newscontent,
+                addtime: addtime
+            },
+            type: 'post',
+            cache: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data.regist_state) {
+                    alert("添加失败!");
+                }else{
+                    alert("添加成功!");
+
+                }
+            },
+            error: function () {
+                alert("ajax请求异常！");
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

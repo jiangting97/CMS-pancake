@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <form id="cms-form">
+        <foreach name="newsList" item="news">
+            <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">{$news.newstitle}</h4>
+                <p class="list-group-item-text">{$news.newscontent}</p>
+            </a>
+        </foreach>
+        <ul class="pagination">
+            <div>{$page}</div>
+        </ul>
+    </form>
+</div>
+
+
+</body>
+</html>
