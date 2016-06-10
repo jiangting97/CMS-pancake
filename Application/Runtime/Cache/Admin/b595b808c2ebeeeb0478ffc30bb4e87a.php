@@ -56,9 +56,6 @@
 </head>
 <body>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,12 +69,19 @@
 <div class="container">
     <div class="col-md-3">
         <ul class="nav nav-pills nav-stacked" id="myTab">
-            <li class="active">
+
+            <li><a href="<?php echo U('/Home/index');?>">返回博客</a></li>
+            <li>
+
+
+
                 <a href="#home" data-toggle="tab">
                     CMS Home
                 </a>
             </li>
-            <li><a href="#menu" data-toggle="tab">菜单管理</a></li>
+            <li>
+                <a href="#menu" data-toggle="tab">文章管理</a>
+            </li>
             <li class="dropdown">
                 <a href="#" id="myTabDrop1" class="dropdown-toggle"
                    data-toggle="dropdown">Java
@@ -93,29 +97,13 @@
 
 
     <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade in active" id="home">
-            <p>W3Cschoool菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。</p>
+        <div class="tab-pane fade " id="home">
+            <p>个人博客</p>
         </div>
-        <div class="tab-pane fade" id="menu">
-            <form action="<?php echo U('News/searchTypeNews');?>" role="search">
-                <li class="active"><a href="<?php echo U('News/addNews');?>" class="btn">添加新闻</a></li>
-                <div class="input-group">
-                    <span class="input-group-addon">类型</span>
-                    <select class="form-control" name="type">
-                        <option value=''>请选择类型</option>
-                        <option value='1'>后台菜单</option>
-                        <option value='0'>前台列表</option>
-                    </select>
-                </div>
+        <div class="tab-pane fade in active" id="menu">
+            <li class="active"><a href="<?php echo U('News/addNews');?>" class="btn">添加新闻</a></li>
+            <li class="active"><a href="<?php echo U('/Home/index');?>" class="btn">返回博客</a></li>
 
-                <input type="hidden" name="c" value="menu"/>
-                <input type="hidden" name="a" value="index"/>
-            <span class="input-group-btn">
-                <button id="sub_data" type="submit" class="btn btn-primary">
-                    搜索
-                </button>
-            </span>
-            </form>
             <div class="col-md-9">
 
 
@@ -193,7 +181,7 @@
         var ll = 1;
 
 
-        $('#myTab li:eq(1) a').tab('show');
+        $('#myTab li:eq(2) a').tab('show');
     });
 </script>
 <script type="text/javascript">
@@ -276,7 +264,6 @@
 <body>
 
 </body>
-<script type="text/javascript" src="/Public/js/admin/common.js"></script>
 </html>
 </body>
 </html>

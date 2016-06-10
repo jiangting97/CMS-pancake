@@ -122,7 +122,6 @@
 <body>
 
 </body>
-<script type="text/javascript" src="/Public/js/admin/common.js"></script>
 </html>
 </body>
 </html>

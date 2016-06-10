@@ -8,22 +8,74 @@
 </head>
 <body>
 <div class="container">
-    <form id="cms-form">
-        <foreach name="newsList" item="news">
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">{$news.newstitle}</h4>
-                <p class="list-group-item-text">{$news.newscontent}</p>
-            </a>
-        </foreach>
+
+    <div class="col-md-2">
+
+        <ul class="nav" id="nav">
+            <foreach name="type" item="t">
+                <li><a href="#articleList" data-toggle="tab" onclick="switchTab('{$t.id}', 1)">{$t.name}</a></li>
+            </foreach>
+        </ul>
+    </div>
+
+    <div class="col-md-10">
+        博文列表
+        <div class="tab-content" id="articleList">
+
+        </div>
         <div class="text-center">
             <ul class="pagination">
-                <div>{$page}</div>
+                <!--<li><a href="#">&laquo;</a></li>-->
             </ul>
         </div>
+    </div>
 
-    </form>
 </div>
+<script src="//cdn.bootcss.com/jquery/3.0.0-beta1/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+<script>
+    typeId = '{$defaultType}';
+    page = '{$defaultPage}';
+    $(document).ready(function() {
+        switchTab(typeId, page);
+    });
 
+    function switchTab(id, page) {
+        $("#articleList").html("");
+        $(".pagination").html("");
+        $.ajax({
+            url: "{:U('Index/showTab')}",
+            data: {
+                typd_id: id,
+                page :page
+            },
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                count = data.count;
+                totalPage = data.totalPage;
+                curPage = data.curPage;
+                typeId = data.typeId;
+                for (i = 1; i <= totalPage; i++) {
+                    var page_li = $("<li>").appendTo(".pagination");
+                    var page_a = $("<a>").appendTo(page_li).text(i).attr("href", "#").
+                    attr("onclick", "switchTab("+typeId+","+(i)+")");
+                }
+                $.each(data.list, function (cur, val) {
+                    var list_group_item = $("<a>").addClass('list-group-item').attr("href", "{:U('Index/read')}"+"?id="+val.id).appendTo($("#articleList"));
+                    var article_title = $("<h4>").addClass('list-group-item-heading article-title').appendTo(list_group_item);  //定义一个标题h4
+                    var article_content = $("<p>").addClass('list-group-item-text article-content').appendTo(list_group_item); //定义一个内容目录
+                    article_title.text(val.title);
+                    article_content.text(val.content);
+                });
+            },
+            error: function () {
+                alert("fail");
+            }
+        });
+    }
+
+</script>
 
 </body>
 </html>
