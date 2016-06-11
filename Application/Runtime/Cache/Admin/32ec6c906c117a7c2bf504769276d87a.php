@@ -27,13 +27,12 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"> <a href="<?php echo U('Index/index');?>" class="btn">Home</a></li>
+                <li class="active"><a href="<?php echo U('Index/index');?>" class="btn">Home</a></li>
+                <li class="nav-right">
 
+                        <a href="<?php echo U('Login/logout');?>">注销</a>
 
-                <li><a href="#about">tab</a></li>
-                <li><a href="#contact">tab</a></li>
-
-                <li class="nav-left">  <a href="<?php echo U('Login/logout');?>">注销</a></li>
+                </li>
             </ul>
 
         </div><!--/.nav-collapse -->

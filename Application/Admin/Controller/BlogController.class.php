@@ -30,8 +30,7 @@ class BlogController extends CommonController{
         } else {
             M('article')->add($blog);
         }
-
-//        $this->display('Index/index');
+        redirect(U('Index/index'));
     }
     public function delBlog()
     {
