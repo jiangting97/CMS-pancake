@@ -24,8 +24,12 @@ class BlogController extends CommonController{
         $blog['type'] = I('type');
         $blog['addtime'] = date("Y-m-d");
         $blog['content'] = I("content");
-        dump($blog);
-        M('article')->add($blog);
+
+        if($blog['id']) {
+            M('article')->save($blog);
+        } else {
+            M('article')->add($blog);
+        }
     }
     public function delBlog()
     {

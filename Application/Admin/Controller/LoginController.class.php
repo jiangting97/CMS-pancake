@@ -17,6 +17,7 @@ class LoginController extends Controller{
             redirect(U('Index/index'));
         }
         $this->display();
+        
    }
     public function loginVolidate(){
         $username = I("username");
