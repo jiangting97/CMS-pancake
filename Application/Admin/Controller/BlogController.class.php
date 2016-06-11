@@ -24,13 +24,13 @@ class BlogController extends CommonController{
         $blog['type'] = I('type');
         $blog['addtime'] = date("Y-m-d");
         $blog['content'] = I("content");
-
+        $blog['id'] = I('id');
         if($blog['id']) {
             M('article')->save($blog);
         } else {
             M('article')->add($blog);
         }
-        redirect(U('Index/index'));
+        $this->success("操作成功!",U('Index/index'));
     }
     public function delBlog()
     {

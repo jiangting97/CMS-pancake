@@ -57,7 +57,7 @@
 <body>
 <div class="container">
     <form action="<?php echo U('Blog/saveBlog');?>" method="post">
-        <input type="hidden" value="<?php echo ($article["id"]); ?>" id="id">
+        <input type="hidden" name="id" value="<?php echo ($article["id"]); ?>" id="id">
         <label for="title">
             文章标题:
         </label>
