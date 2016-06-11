@@ -26,16 +26,15 @@
             <a class="navbar-brand" href="#">博客后台管理系统</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav pull-right">
                 <li class="active"><a href="<?php echo U('Index/index');?>" class="btn">Home</a></li>
                 <li class="nav-right">
-
                         <a href="<?php echo U('Login/logout');?>">注销</a>
-
                 </li>
             </ul>
 
-        </div><!--/.nav-collapse -->
+        </div>
+
     </div>
 </nav>
 
@@ -60,11 +59,10 @@
     <div class="col-md-3">
         <ul class="nav nav-pills nav-stacked" id="myTab">
 
-            <li><a href="<?php echo U('/Home/index');?>">返回博客</a></li>
-            <li><a href="<?php echo U('Blog/addBlog');?>">添加博文</a></li>
-            <li>
-                <a href="#menu" data-toggle="tab">文章管理</a>
-            </li>
+
+            <li><a href="#menu" data-toggle="tab">文章管理</a></li>
+
+            <li><a href="#blogtype" data-toggle="tab">分类管理</a></li>
             <li class="dropdown">
                 <a href="#" id="myTabDrop1" class="dropdown-toggle"
                    data-toggle="dropdown">今日任务
@@ -75,16 +73,19 @@
                     <li><a href="#ejb" tabindex="-1" data-toggle="tab">复习博文</a></li>
                 </ul>
             </li>
+            <li><a href="<?php echo U('/Home/index');?>">返回博客</a></li>
         </ul>
     </div>
 
 
     <div id="myTabContent" class="tab-content">
-
-        <div class="tab-pane fade in active" id="menu">
+        <div class="tab-pane fade in" id="menu">
             <div class="col-md-9">
                 <form id="cms-form">
+                    <ul class="nav nav-pills pull-right ">
 
+                        <li><a href="<?php echo U('Blog/addBlog');?>" class="nav btn">添加博文</a></li>
+                    </ul>
                     <table class="table table-striped table-border">
                         <caption>博文列表</caption>
                         <thead>
@@ -118,6 +119,12 @@
                 </form>
             </div>
         </div>
+
+        <div class="tab-pane fade in" id="blogtype">
+
+
+            typetype
+        </div>
         <div class="tab-pane fade" id="jmeter">
             <p>添加博文整理知识</p>
         </div>
@@ -138,7 +145,7 @@
 
 <script>
     $(function () {
-        $('#myTab li:eq(2) a').tab('show');
+        $('#myTab li:eq(0) a').tab('show');
     });
 </script>
 <script type="text/javascript">

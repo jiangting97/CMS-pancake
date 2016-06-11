@@ -72,8 +72,7 @@
 
         <ul class="nav" id="nav">
 
-
-            <li><a href="#articleList" data-toggle="tab" onclick="switchTab(0, 1)"><?php echo ($t["name"]); ?></a></li>
+            <li><a href="#articleList" data-toggle="tab" onclick="switchTab(0, 1)">所有文章</a></li>
 
             <?php if(is_array($type)): foreach($type as $key=>$t): ?><li><a href="#articleList" data-toggle="tab" onclick="switchTab('<?php echo ($t["id"]); ?>', 1)"><?php echo ($t["name"]); ?></a></li><?php endforeach; endif; ?>
         </ul>

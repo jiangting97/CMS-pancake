@@ -6,7 +6,7 @@ use Think\Page;
 
 class IndexController extends Controller
 {
-    private $limit = 2;
+    private $limit = 7;
     public function index()
     {
         $type = M("type")->select();
@@ -41,8 +41,19 @@ class IndexController extends Controller
         $pageNum = I("page")-1;
         $start = $pageNum * $limit;
         $count  = M("article")->where("type='$typeId'")->count();// 查询满足要求的总记录数
-//        $list = M("article")->where("type='$typeId'")->order('addtime desc')->page($pageNum." , ".$this->limit)->select();
-        $list = M("article")->where("type='$typeId'")->order('id desc')->limit("$start, $limit")->select();
+//      $list = M("article")->where("type='$typeId'")->order('addtime desc')->page($pageNum." , ".$this->limit)->select();
+
+
+//        dump($typeId);
+//        die();
+        if($typeId != 0) {
+            $count  = M("article")->where("type='$typeId'")->count();// 查询满足要求的总记录数
+            $list = M("article")->where("type='$typeId'")->order('id desc')->limit("$start, $limit")->select();
+        }  else {
+            $count  = M("article")->count();// 查询满足要求的总记录数
+            $list = M("article")->order('id desc')->limit("$start, $limit")->select();
+        }
+
         $res['list'] = $list;
         $res['curPage'] = $pageNum;
         $res['typeId'] = $typeId;

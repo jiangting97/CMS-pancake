@@ -26,16 +26,15 @@
             <a class="navbar-brand" href="#">博客后台管理系统</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav pull-right">
                 <li class="active"><a href="<?php echo U('Index/index');?>" class="btn">Home</a></li>
                 <li class="nav-right">
-
                         <a href="<?php echo U('Login/logout');?>">注销</a>
-
                 </li>
             </ul>
 
-        </div><!--/.nav-collapse -->
+        </div>
+
     </div>
 </nav>
 
