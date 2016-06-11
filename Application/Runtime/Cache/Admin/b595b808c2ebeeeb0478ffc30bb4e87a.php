@@ -61,7 +61,7 @@
         <ul class="nav nav-pills nav-stacked" id="myTab">
 
             <li><a href="<?php echo U('/Home/index');?>">返回博客</a></li>
-            <li><a href="<?php echo U('Blog/addBlogs');?>">添加博文</a></li>
+            <li><a href="<?php echo U('Blog/addBlog');?>">添加博文</a></li>
             <li>
                 <a href="#menu" data-toggle="tab">文章管理</a>
             </li>

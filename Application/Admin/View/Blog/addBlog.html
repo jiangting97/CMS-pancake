@@ -15,10 +15,12 @@
         </label>
         <input type="text" name="title" id="title"/>
         <label for="article-type">博文类型</label>
+
         <select id="article-type" name="type">
             <foreach name="type" item="t">
                 <option value="{$t.id}">{$t.name}</option>
             </foreach>
+
         </select>
         <textarea id="content" name="content"></textarea>
         <input class="btn btn-success pull-right" type="submit" value="提交"/>
