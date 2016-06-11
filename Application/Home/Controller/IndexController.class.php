@@ -27,6 +27,7 @@ class IndexController extends Controller
 
         $article = M("article")->where("id='$id'")->find();
         if ($article) {
+            $article['content'] = html_entity_decode($article['content']);
             $this->assign("article", $article);
             $this->display();
         } else {

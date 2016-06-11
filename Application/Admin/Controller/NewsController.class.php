@@ -12,8 +12,11 @@ use Think\Page;
 
 class NewsController extends CommonController
 {
-    public function addNews()
+    public function addBlogs()
     {
+        $type = M("type")->select();
+        $this->assign('type',$type);
+//        dump(type)
         $this->display();
     }
 

@@ -64,9 +64,9 @@
                 $.each(data.list, function (cur, val) {
                     var list_group_item = $("<a>").addClass('list-group-item').attr("href", "{:U('Index/read')}"+"?id="+val.id).appendTo($("#articleList"));
                     var article_title = $("<h4>").addClass('list-group-item-heading article-title').appendTo(list_group_item);  //定义一个标题h4
-                    var article_content = $("<p>").addClass('list-group-item-text article-content').appendTo(list_group_item); //定义一个内容目录
+                    var addtime = $("<p>").addClass('list-group-item-text article-content').appendTo(list_group_item); //定义一个内容目录
                     article_title.text(val.title);
-                    article_content.text(val.content);
+                    addtime.text(val.addtime);
                 });
             },
             error: function () {
