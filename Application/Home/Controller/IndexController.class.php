@@ -51,15 +51,11 @@ class IndexController extends Controller
 
     public function showTab(){
         $limit = $this->limit;
+        $callback = I("callback");
         $typeId = I("typd_id");
         $pageNum = I("page")-1;
         $start = $pageNum * $limit;
         $count  = M("article")->where("type='$typeId'")->count();// 查询满足要求的总记录数
-//      $list = M("article")->where("type='$typeId'")->order('addtime desc')->page($pageNum." , ".$this->limit)->select();
-
-
-//        dump($typeId);
-//        die();
         if($typeId != 0) {
             $count  = M("article")->where("type='$typeId'")->count();// 查询满足要求的总记录数
             $list = M("article")->where("type='$typeId'")->order('id desc')->limit("$start, $limit")->select();
@@ -67,13 +63,15 @@ class IndexController extends Controller
             $count  = M("article")->count();// 查询满足要求的总记录数
             $list = M("article")->order('id desc')->limit("$start, $limit")->select();
         }
-
         $res['list'] = $list;
         $res['curPage'] = $pageNum;
         $res['typeId'] = $typeId;
         $res['totalPage'] = ceil(floatval($count) / floatval($this->limit));
         $res['count'] = $count;
-        echo json_encode($res);
+
+        $ret = json_encode($res);
+
+        echo $callback."($ret)";
     }
 
 }
