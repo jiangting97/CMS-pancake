@@ -12,7 +12,7 @@ class IndexController extends Controller
         $type = M("type")->select();
         if( $type ){
             $this->assign("type", $type);
-            $this->assign("defaultType", $type[0]['id']);
+            $this->assign("defaultType", 0);
             $this->assign("defaultPage", 1);
         }
         $this->display(); // 输出模板

@@ -66,7 +66,11 @@
 <body>
 <div class="container">
     <h2 class="text-center"><?php echo ($article["title"]); ?></h2>
-    <p><?php echo ($article["content"]); ?></p>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8"><?php echo ($article["content"]); ?></div>
+        <div class="col-md-2"></div>
+    </div>
 </div>
 </body>
 </html>
