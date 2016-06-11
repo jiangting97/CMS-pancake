@@ -28,15 +28,19 @@ class IndexController extends Controller
         $article = M("article")->where("id='$id'")->find();
         if ($article) {
             $article['content'] = html_entity_decode($article['content']);
-            $this->assign("article", $article);
-            $this->display();
+            $ret['error_code'] = 0;
+            $ret['article'] = $article;
+
         } else {
-            $this->error("无此文章!");
+            $ret['error_code'] = 1;
+            $ret['msg'] = "无此文章";
         }
+        echo json_encode($ret);
     }
 
     public function getArticle(){
         $id = I("id");
+        $callback = I("callback");
         $article = M("article")->where("id='$id'")->find();
         if ($article) {
             $article['content'] = html_entity_decode($article['content']);
@@ -46,7 +50,9 @@ class IndexController extends Controller
             $ret['error_code'] = 1;
             $ret['msg'] = "无此文章";
         }
-        echo json_encode($ret);
+        $res = json_encode($ret);
+        echo $callback."($res)";
+
     }
 
     public function getType(){
