@@ -5,11 +5,6 @@ use Think\Page;
 
 class IndexController extends CommonController {
     public function index(){
-//        $newsList = M("news")->select();
-//        $this->assign("newsList", $newsList);
-//        $this->display();
-
-
         $article = M("article"); // 实例化User对象
         $count      = $article->count();// 查询满足要求的总记录数
         $Page       = new Page($count,3);// 实例化分页类 传入总记录数和每页显示的记录数(25)
@@ -24,7 +19,5 @@ class IndexController extends CommonController {
 
     public function getNews() {
         $ret = M("news")->where("")->find();
-        
-        
     }
 }

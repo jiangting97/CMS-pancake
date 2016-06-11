@@ -27,13 +27,12 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"> <a href="<?php echo U('Index/index');?>" class="btn">Home</a></li>
+                <li class="active"><a href="<?php echo U('Index/index');?>" class="btn">Home</a></li>
+                <li class="nav-right">
 
+                        <a href="<?php echo U('Login/logout');?>">注销</a>
 
-                <li><a href="#about">tab</a></li>
-                <li><a href="#contact">tab</a></li>
-
-                <li class="nav-left">  <a href="<?php echo U('Login/logout');?>">注销</a></li>
+                </li>
             </ul>
 
         </div><!--/.nav-collapse -->
@@ -62,7 +61,7 @@
         <ul class="nav nav-pills nav-stacked" id="myTab">
 
             <li><a href="<?php echo U('/Home/index');?>">返回博客</a></li>
-            <li><a href="<?php echo U('News/addBlogs');?>">添加博文</a></li>
+            <li><a href="<?php echo U('Blog/addBlogs');?>">添加博文</a></li>
             <li>
                 <a href="#menu" data-toggle="tab">文章管理</a>
             </li>
@@ -81,22 +80,15 @@
 
 
     <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade " id="home">
-            <p>个人博客</p>
-        </div>
+
         <div class="tab-pane fade in active" id="menu">
-
-
             <div class="col-md-9">
-
-
                 <form id="cms-form">
 
                     <table class="table table-striped table-border">
                         <caption>博文列表</caption>
                         <thead>
                         <tr>
-
                             <th>博文标题</th>
                             <th>博文类型</th>
                             <th>添加日期</th>
@@ -106,21 +98,16 @@
                         <tbody>
 
                         <?php if(is_array($list)): foreach($list as $key=>$article): ?><tr>
-
                                 <td><?php echo ($article["title"]); ?></td>
                                 <td><?php echo ($article["type"]); ?></td>
                                 <td><?php echo ($article["addtime"]); ?></td>
                                 <td>
-                                    <a href="<?php echo U('News/modifyNews',array( 'newsid'=>$article['id']));?>"
+                                    <a href="<?php echo U('Blog/editBlog',array( 'id'=>$article['id']));?>"
                                        class="btn">编辑</a>
                                     <input type="button" id="delNews" class="btn delNews" value="删除"
-                                           onclick="delNews('<?php echo ($article["id"]); ?>')"/>
-
-                                </td>
-
+                                           onclick="delBlog('<?php echo ($article["id"]); ?>')"/>
+                                </td
                             </tr><?php endforeach; endif; ?>
-
-
                         </tbody>
                     </table>
                     <div class="pull-right">
@@ -128,9 +115,6 @@
                             <div><?php echo ($page); ?></div>
                         </ul>
                     </div>
-
-
-
                 </form>
             </div>
         </div>
@@ -194,12 +178,13 @@
 
     });
 
-    function delNews(newsid) {
+    function delBlog(id) {
+        alert(id);
 
         $.ajax({
-            url: "<?php echo U('News/delNews');?>",
+            url: "<?php echo U('Blog/delBlog');?>",
             data: {
-                newsid: newsid
+                id: id
             },
             type: 'post',
             cache: false,

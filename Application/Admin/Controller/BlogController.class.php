@@ -27,5 +27,26 @@ class BlogController extends CommonController{
         dump($blog);
         M('article')->add($blog);
     }
+    public function delBlog()
+    {
+        $id = I("id");
+        if (M("article")->where("id='$id'")->delete()) {
+            $ret['error_code'] = 0;
+        } else {
+            $ret['error_code'] = 1;
+        }
+        echo json_encode($ret);
+    }
+
+    public function editBlog() {
+        $id = I("id");
+        $article = M("article")->where("id='$id'")->find();
+        $article['content'] = html_entity_decode($article['content']);
+        $this->assign('article', $article);
+        $type = M("type")->select();
+        $this->assign('type',$type);
+        $this->display();
+
+    }
 
 }

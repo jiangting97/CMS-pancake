@@ -17,9 +17,7 @@ class LoginController extends Controller{
             redirect(U('Index/index'));
         }
         $this->display();
-
    }
-
     public function loginVolidate(){
         $username = I("username");
         $password = I("password");
@@ -33,21 +31,14 @@ class LoginController extends Controller{
             dump('密码不能为空');
             die();
         }
-
         $ret = M("admin")->where("username='$username' and password='$password'")->find();
-
         if( $ret ){
-
-            dump($ret);
-            dump($ret['username']);
-            //die();
+//            dump($ret);
+//            dump($ret['username']);
             session("user", $ret);
             $this->success("登陆成功!",U('Index/index'));
-
         }
-
     }
-
     public function logout() {
         session("user",null);
         $this->success("注销成功", U('Login/index'));

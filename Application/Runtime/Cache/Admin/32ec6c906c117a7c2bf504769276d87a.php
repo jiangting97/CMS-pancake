@@ -23,13 +23,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">内容管理系统</a>
+            <a class="navbar-brand" href="#">博客后台管理系统</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Html</a></li>
-                <li><a href="#about">CSS</a></li>
-                <li><a href="#contact">Javascript</a></li>
+                <li class="active"> <a href="<?php echo U('Index/index');?>" class="btn">Home</a></li>
+
+
+                <li><a href="#about">tab</a></li>
+                <li><a href="#contact">tab</a></li>
 
                 <li class="nav-left">  <a href="<?php echo U('Login/logout');?>">注销</a></li>
             </ul>
