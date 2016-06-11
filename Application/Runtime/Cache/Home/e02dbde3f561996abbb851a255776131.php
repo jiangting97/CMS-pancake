@@ -28,9 +28,9 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="<?php echo U('Index/index');?>">home</a></li>
-                    <li><a href="<?php echo U('Index/Link');?>">Link</a></li>
-                    <li><a href="#contact">unknown</a></li>
+                    <!--<li class="active"><a href="<?php echo U('Index/index');?>">home</a></li>-->
+                    <!--<li><a href="<?php echo U('Index/Link');?>">Link</a></li>-->
+                    <!--<li><a href="#contact">unknown</a></li>-->
 
                 </ul>
 
@@ -65,7 +65,7 @@
 </head>
 <body>
 <div class="container">
-    <h2 class="text-center"><?php echo ($article["title"]); ?></h2>
+    <h1 class="text-center"><?php echo ($article["title"]); ?></h1>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8"><?php echo ($article["content"]); ?></div>

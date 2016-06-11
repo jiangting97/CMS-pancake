@@ -28,9 +28,9 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="<?php echo U('Index/index');?>">home</a></li>
-                    <li><a href="<?php echo U('Index/Link');?>">Link</a></li>
-                    <li><a href="#contact">unknown</a></li>
+                    <!--<li class="active"><a href="<?php echo U('Index/index');?>">home</a></li>-->
+                    <!--<li><a href="<?php echo U('Index/Link');?>">Link</a></li>-->
+                    <!--<li><a href="#contact">unknown</a></li>-->
 
                 </ul>
 

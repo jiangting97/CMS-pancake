@@ -35,6 +35,20 @@ class IndexController extends Controller
         }
     }
 
+    public function getArticle(){
+        $id = I("id");
+        $article = M("article")->where("id='$id'")->find();
+        if ($article) {
+            $article['content'] = html_entity_decode($article['content']);
+            $ret['error_code'] = 0;
+            $ret['article'] = $article;
+        }else{
+            $ret['error_code'] = 1;
+            $ret['msg'] = "无此文章";
+        }
+        echo json_encode($ret);
+    }
+
     public function showTab(){
         $limit = $this->limit;
         $typeId = I("typd_id");
