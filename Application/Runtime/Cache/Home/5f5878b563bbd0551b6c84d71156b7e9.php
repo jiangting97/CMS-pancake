@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/Public/css/bootstrap.min.css">
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse ">
     <div class="container">
         <div class="col-md-10">
             <div class="navbar-header">
@@ -71,11 +71,8 @@
     <div class="col-md-2">
 
         <ul class="nav" id="nav">
-
-
-            <li><a href="#articleList" data-toggle="tab" onclick="switchTab(0, 1)"><?php echo ($t["name"]); ?></a></li>
-
-            <?php if(is_array($type)): foreach($type as $key=>$t): ?><li><a href="#articleList" data-toggle="tab" onclick="switchTab('<?php echo ($t["id"]); ?>', 1)"><?php echo ($t["name"]); ?></a></li><?php endforeach; endif; ?>
+            <li><a href="#" onclick="tips()">第一个</a></li>
+            <?php if(is_array($type)): foreach($type as $key=>$t): ?><li><a href="#articleList" data-toggle="tab" onclick="switchTab('<?php echo ($t["id"]); ?>')"><?php echo ($t["name"]); ?></a></li><?php endforeach; endif; ?>
         </ul>
     </div>
 
@@ -89,17 +86,26 @@
                 <!--<li><a href="#">&laquo;</a></li>-->
             </ul>
         </div>
+
+
     </div>
 
 </div>
+
+
 <script src="//cdn.bootcss.com/jquery/3.0.0-beta1/jquery.js"></script>
 <script type="text/javascript" src="/Public/js/bootstrap.min.js"></script>
 <script>
     typeId = '<?php echo ($defaultType); ?>';
     page = '<?php echo ($defaultPage); ?>';
     $(document).ready(function() {
-        switchTab(typeId, page);
+        alert($("#nav>:first").text());
+        $("#nav>:first").text().click()
     });
+
+    function tips(){
+        alert("123");
+    }
 
     function switchTab(id, page) {
         $("#articleList").html("");
@@ -120,14 +126,14 @@
                 for (i = 1; i <= totalPage; i++) {
                     var page_li = $("<li>").appendTo(".pagination");
                     var page_a = $("<a>").appendTo(page_li).text(i).attr("href", "#").
-                    attr("onclick", "switchTab("+typeId+","+(i)+")");
+                    attr("onclick", "switchTab("+typeId+","+(i-1)+")");
                 }
                 $.each(data.list, function (cur, val) {
                     var list_group_item = $("<a>").addClass('list-group-item').attr("href", "<?php echo U('Index/read');?>"+"?id="+val.id).appendTo($("#articleList"));
                     var article_title = $("<h4>").addClass('list-group-item-heading article-title').appendTo(list_group_item);  //定义一个标题h4
-                    var addtime = $("<p>").addClass('list-group-item-text article-content').appendTo(list_group_item); //定义一个内容目录
+                    var article_content = $("<p>").addClass('list-group-item-text article-content').appendTo(list_group_item); //定义一个内容目录
                     article_title.text(val.title);
-                    addtime.text(val.addtime);
+                    article_content.text(val.content);
                 });
             },
             error: function () {
