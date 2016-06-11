@@ -49,6 +49,12 @@ class IndexController extends Controller
         echo json_encode($ret);
     }
 
+    public function getType(){
+        $type = json_encode(M("type")->select());
+        $callback = I("callback");
+        echo $callback."($type)";
+    }
+
     public function showTab(){
         $limit = $this->limit;
         $callback = I("callback");
