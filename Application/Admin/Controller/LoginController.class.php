@@ -22,8 +22,8 @@ class LoginController extends Controller{
     public function loginVolidate(){
         $username = I("username");
         $password = I("password");
-        dump($username);
-        dump($password);
+//        dump($username);
+//        dump($password);
         if(!trim($username)) {
             dump("用户名不能为空");
             die();

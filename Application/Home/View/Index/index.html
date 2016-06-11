@@ -12,6 +12,10 @@
     <div class="col-md-2">
 
         <ul class="nav" id="nav">
+
+
+            <li><a href="#articleList" data-toggle="tab" onclick="switchTab(0, 1)">{$t.name}</a></li>
+
             <foreach name="type" item="t">
                 <li><a href="#articleList" data-toggle="tab" onclick="switchTab('{$t.id}', 1)">{$t.name}</a></li>
             </foreach>
